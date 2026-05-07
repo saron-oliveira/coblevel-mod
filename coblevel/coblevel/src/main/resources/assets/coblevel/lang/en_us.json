@@ -1,9 +1,0 @@
-{
-  "coblevel.progress.title": "CobLevel — Cap: %s",
-  "coblevel.progress.captures": "Captures: %d/%d",
-  "coblevel.progress.trainers": "Trainers: %d/%d",
-  "coblevel.progress.gym": "Gym cleared: %s",
-  "coblevel.progress.xp": "XP delivered: %d/%d",
-  "coblevel.cap.advanced": "Level Cap increased to %d!",
-  "coblevel.cap.maxreached": "Maximum Level Cap reached!"
-}
