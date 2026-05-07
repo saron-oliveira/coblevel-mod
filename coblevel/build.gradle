@@ -1,0 +1,69 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+
+version = '1.0.0'
+group = 'com.coblevel'
+archivesBaseName = 'coblevel'
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                coblevel { source sourceSets.main }
+            }
+        }
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                coblevel { source sourceSets.main }
+            }
+        }
+    }
+}
+
+repositories {
+    maven {
+        name = "Forge"
+        url = "https://maven.minecraftforge.net/"
+    }
+    maven {
+        // CurseMaven - hospeda todos os mods do CurseForge
+        name = "CurseMaven"
+        url = "https://cursemaven.com"
+    }
+    mavenCentral()
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.10'
+
+    // Cobblemon 1.5.2 Forge - project 687131, file 5375390
+    // (Cobblemon v1.5.2 ~ Forge para 1.20.1)
+    compileOnly fg.deobf("curse.maven:cobblemon-687131:5375390")
+}
+
+jar {
+    manifest {
+        attributes([
+            "Specification-Title"     : "coblevel",
+            "Specification-Vendor"    : "coblevel",
+            "Specification-Version"   : "1",
+            "Implementation-Title"    : project.name,
+            "Implementation-Version"  : project.version,
+            "Implementation-Vendor"   : "coblevel",
+        ])
+    }
+}
